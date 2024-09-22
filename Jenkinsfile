@@ -61,19 +61,11 @@ pipeline {
 
 
       stage('Docker Build and Push') {
-//       steps {
-//           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-//           sh 'docker build -t somnath2175/restaurant-listing-service:${VERSION} .'
-//           sh 'docker push somnath2175/restaurant-listing-service:${VERSION}'
-//       }
-
       steps {
-        // Use sudo to run Docker as root
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        sh 'sudo docker build -t somnath2175/restaurant-listing-service:${VERSION} .'
-        sh 'sudo docker push somnath2175/restaurant-listing-service:${VERSION}'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+          sh 'docker build -t somnath2175/restaurant-listing-service:${VERSION} .'
+          sh 'docker push somnath2175/restaurant-listing-service:${VERSION}'
       }
-
     } 
 
 
